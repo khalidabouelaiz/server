@@ -1,0 +1,61 @@
+{
+  "Chicken Factory - Ivry": {
+    "totalGlobal": 18.3,
+    "history": {
+      "Livraison": 18.3
+    }
+  },
+  "🥙Naan & Burger Spot🍔": {
+    "totalGlobal": 108.60599999999995,
+    "history": {
+      "Marketplace+": 123.42,
+      "Frais de livraison Marketplace+": 4.869999999999999,
+      "Frais de commande minimum Marketplace+": 5,
+      "Publicités Marketer": -24.684000000000005
+    }
+  },
+  "Happy Chicken - Ivry": {
+    "totalGlobal": 10.9,
+    "history": {
+      "Livraison": 10.9
+    }
+  },
+  "Original Factory - Ivry": {
+    "totalGlobal": 22.4,
+    "history": {
+      "Livraison": 22.4
+    }
+  },
+  "Naans and Tacos - Ivry": {
+    "totalGlobal": 50.272,
+    "history": {
+      "Livraison": 74.48,
+      "Remboursement client": -7.84,
+      "Publicités Marketer": -16.368000000000002
+    }
+  },
+  "🍗 Fry Chicken & Naan Spot 🥙": {
+    "totalGlobal": 126.82550000000005,
+    "history": {
+      "Marketplace+": 231.02150000000006,
+      "Frais de livraison Marketplace+": 11.799999999999999,
+      "Frais de commande minimum Marketplace+": 3.5,
+      "Publicités Marketer": -119.496
+    }
+  },
+  "🌮Mexicanos & Bowls Spot🧀": {
+    "totalGlobal": 57.473999999999975,
+    "history": {
+      "Marketplace+": 100.13,
+      "Frais de commande minimum Marketplace+": 0.1,
+      "Frais de livraison Marketplace+": 3.66,
+      "Publicités Marketer": -46.416
+    }
+  },
+  "🌯Wraps & Burger Spot🍔": {
+    "totalGlobal": -0.9,
+    "history": {
+      "Publicités Marketer": -0.9
+    }
+  }
+}

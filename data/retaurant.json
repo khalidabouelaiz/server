@@ -1,0 +1,251 @@
+[
+  {
+    "uuid": "470bf432-75ba-5d81-9716-80bcac8d6cc4",
+    "name": "🌮Mexicanos & Bowls Spot🧀 ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "2db0a3ea-f4f5-508e-95be-51f441bf1fe2",
+    "name": "🌯Wraps & Burger Spot 🍔 Paris",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "347805cb-319f-56ac-a84f-ffdfc8340701",
+    "name": "🍗 Fry Chicken & Naan Spot 🥙 ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "7a5e61aa-46ca-5d44-a9d7-77eaf2dcdd31",
+    "name": "🥙Naan & Burger Spot🍔",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "03d4e8cc-16e2-57a6-87d9-5c729dcf632c",
+    "name": "Chicken Factory    ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "34b2902d-0bce-5342-90f3-24dc89262aac",
+    "name": "🍔Burger Bliss & Sandwich Serenity🥪",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "896e4159-744d-57a4-8582-bd9d91305846",
+    "name": "🍕 Pizzaroma & Taco Twirl 🌮",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+
+  {
+    "uuid": "efa63bf4-c660-53f7-b4e6-d8a6f5db750b",
+    "name": "🥙 Naan & Chicken Fry 🍗",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+
+  {
+    "uuid": "fdc91a19-3d5a-56a3-82a6-8744f6e90c8d",
+    "name": "Américain Fried",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "2798cd49-4635-560e-b02d-115a9aff4b2a",
+    "name": "Benny's 🍔",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "4a4ae7c6-5b2d-4d99-9d12-eb3f4f151b9e",
+    "name": "Benny’s ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "2541c350-1245-4001-b410-d5b85e4e29d6",
+    "name": "Burger Party",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "e7b2476e-b98b-4a66-bf89-8daac121ac38",
+    "name": "Burger Signature",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "5c09e017-1fc1-518f-a164-3af6aa2f92e2",
+    "name": "Calm's",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "6178166c-6897-4493-91f1-00353bd2dee7",
+    "name": "Casa Del Burger",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "73520872-9d96-5a45-b8a5-43b1e97f7ceb",
+    "name": "Cheesy Delights - 🧀 Poutine & Calzone 🍕",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "6feb3ca3-f1f9-4b25-b742-a189c5ccb631",
+    "name": "Chicken & Burger",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "a5e79b62-45b3-5fa5-9dba-a57d1f3cf644",
+    "name": "El Mexicano",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "45ca9b96-9003-45b8-9027-e81186628744",
+    "name": "Los Mexicanos 🌮",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "51951c08-9fec-4640-b6f9-50ad98990a49",
+    "name": "Nuevo Mexico",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "4f938a2a-dfb3-5c8e-ba38-50c2b48bb7ae",
+    "name": "O'Bowl - Poutines & Burgers - Plaisance",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "c7e77154-e9ab-541d-a14c-6adfa4f9f710",
+    "name": "Panam Tacos 🌯",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "2a403791-548b-5ae6-82d2-6617016d6cf2",
+    "name": "Pop's Smash 🍔🍟",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "d235ae89-b4ea-5e0b-a101-dd2b2fa41d7c",
+    "name": "Soul Chicken",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+
+  {
+    "uuid": "95e891a3-8a26-5dd7-99c5-fd6eecdea43c",
+    "name": "Tacos Bowl",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "85774ac0-f31c-4c50-8b64-bf51f72418e1",
+    "name": "Tacos Time",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "b6de5772-9934-448f-b510-3b99317b7991",
+    "name": "Ur Chef (Tid Dilevry)",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "8e6478e3-45ed-5cb5-8713-24936b40a200",
+    "name": "Wakam",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "685e4188-6310-4b92-bace-99b331d4294f",
+    "name": "Wakam Burger - Ménilmontant",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "73d54cb2-d3b5-52eb-ae4b-71cac78a1530",
+    "name": "Wakam Burger - Plaisance",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "2efa27b0-de62-5d34-955f-1c72399849ea",
+    "name": "Walter White Burger 🍔",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+
+  {
+    "uuid": "ce3b41fa-89d6-5571-83bb-763cfc3fd929",
+    "name": "Happy Chicken - Ivry sur    ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "628e928b-6745-5ef8-8b88-ff47a9574334",
+    "name": "  Naans and Tacos   ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "3b8c33b3-9e27-511f-b5ad-11ad41b20d8d",
+    "name": "Original Factory    ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  },
+  {
+    "uuid": "53704c32-ca8f-52cc-a5fc-e03020cd9393",
+    "name": "Wonder Chicken    ",
+    "parentUUID": null,
+    "parentName": null,
+    "__typename": "Group"
+  }
+]
