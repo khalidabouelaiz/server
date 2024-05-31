@@ -13,10 +13,15 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
     "express": "^4.18.2",
+    "express-session": "^1.18.0",
     "fs": "^0.0.1-security",
+    "iconv-lite": "^0.6.3",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "puppeteer": "^22.3.0",
-    "iconv-lite": "^0.6.3"
+    "xvfb": "^0.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
