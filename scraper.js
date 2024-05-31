@@ -2,40 +2,35 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
-const { spawn } = require('child_process');
 
-const app = express(); // Déclarer express une seule fois
-
+const app = express();
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.json());
+
+let browser; // Déclarer la variable browser en dehors des fonctions pour la rendre accessible globalement
 let collectedData = [];
-// Endpoint pour le premier serveur
-app.get('/api', (req, res) => {
-  res.json({ users: ['usero', 'usert', 'userr'] });
-});
+
 async function startServer() {
-  browser = await puppeteer.launch({ headless: false });
-  await openFirstPage();
+  try {
+    browser = await puppeteer.launch({ headless: false });
+    console.log('Le serveur est lancé sur le port 4000');
+    await openFirstPage();
+  } catch (error) {
+    console.error('Erreur rencontrée lors du démarrage du serveur :', error);
+  }
 }
+
 async function openFirstPage() {
   try {
-    // Lancer le navigateur en mode visible
     const page = await browser.newPage();
-
-    // Naviguer vers la première page après le lancement du serveur
     await page.goto(
       'https://merchants.ubereats.com/manager/payments?restaurantUUID=19b98315-9e91-5ad3-b6a5-5a93b7dabe6b'
     );
 
     const emailInputSelector = '#PHONE_NUMBER_or_EMAIL_ADDRESS';
-
-    // Attendre que l'élément input soit chargé
     await page.waitForSelector(emailInputSelector);
-
-    // Écrire l'email dans l'élément input
     await page.type(emailInputSelector, 'khalidaboue1@hotmail.com');
-
-    // Continuer avec le reste de votre code pour la première page
 
     console.log('Première page ouverte dans le navigateur.');
   } catch (error) {
@@ -46,7 +41,10 @@ async function openFirstPage() {
   }
 }
 
-// Endpoint pour le deuxième serveur
+app.get('/api', (req, res) => {
+  res.json({ users: ['usero', 'usert', 'userr'] });
+});
+
 app.get('/api/test', (req, res) => {
   console.log('daz mn api');
   const data = chargerDonneesDuFichier();
@@ -56,19 +54,10 @@ app.get('/api/test', (req, res) => {
     const merchantFundedFoodDiscounts = donneesSpecifiques.find(
       (item) => item.categoryName === 'MerchantFundedFoodDiscounts'
     );
-    if (merchantFundedFoodDiscounts) {
-      FundedFoodDiscounts = merchantFundedFoodDiscounts.categoryTotal;
-    } else {
-      FundedFoodDiscounts = 0;
-    }
-    const nombredecommande = donneesSpecifiques.find(
+    const depensedecommande = donneesSpecifiques.find(
       (item) => item.categoryName === 'numerodecommande'
     );
-    if (nombredecommande) {
-      depensedecommande = nombredecommande.categoryTotal * 4;
-    } else {
-      depensedecommande = 0;
-    }
+
     const chiffreAffaires =
       donneesSpecifiques.find((item) => item.categoryName === 'FoodSubTotal')
         .categoryTotal + FundedFoodDiscounts;
@@ -79,11 +68,9 @@ app.get('/api/test', (req, res) => {
     const orderErrorAdjustmentItem = donneesSpecifiques.find(
       (item) => item.categoryName === 'OrderErrorAdjustmentGlobal'
     );
-    if (orderErrorAdjustmentItem) {
-      remboursements = orderErrorAdjustmentItem.categoryTotal;
-    } else {
-      remboursements = 0;
-    }
+    const remboursements = orderErrorAdjustmentItem
+      ? orderErrorAdjustmentItem.categoryTotal
+      : 0;
 
     const virement = donneesSpecifiques.find(
       (item) => item.categoryName === 'total_payout'
@@ -91,6 +78,7 @@ app.get('/api/test', (req, res) => {
 
     const pourcentageGain =
       ((virement - depensedecommande) * 100) / chiffreAffaires;
+
     const pourcentagevirement = (virement * 100) / chiffreAffaires;
     const pourcentagepublicitaires = -(
       100 -
@@ -108,11 +96,12 @@ app.get('/api/test', (req, res) => {
       pourcentageREMBOURSEMENTS -
       100
     );
+
     console.log('Devis :');
-    console.log(`- depense de commande  : ${depensedecommande} €`);
+    console.log(`- dépense de commande : ${depensedecommande} €`);
     console.log(`- Chiffre d'affaires : ${chiffreAffaires} €`);
     console.log(`- Dépenses publicitaires : ${depensesPublicitaires} €`);
-    console.log(`- rembourssement : ${remboursements} €`);
+    console.log(`- remboursement : ${remboursements} €`);
     console.log(`- Virement : ${virement} €`);
     console.log(`- Pourcentage de gain : ${pourcentageGain.toFixed(2)} %`);
 
@@ -133,29 +122,23 @@ app.get('/api/test', (req, res) => {
         PourcentageUber: pourcentageUber.toFixed(2),
       },
     };
-    res.json(devis); // Renvoyer les données du devis en réponse à la requête
+    res.json(devis);
   } else {
     res
       .status(500)
       .json({ error: 'Impossible de charger les données du fichier.' });
   }
 });
-// Endpoint pour le troisième serveur
+
 app.post('/api/link', async (req, res) => {
   const link = req.body.link;
   console.log('Lien reçu du frontend :', link);
 
   try {
-    // Puisque `scrapeData` est une fonction asynchrone, on utilise `await` pour attendre sa complétion.
     await scrapeData(link);
-
-    // Réinitialiser les données si nécessaire.
     reinitialiserDonnees();
-
-    // Sauvegarder les données
     saveDataToJson(collectedData);
 
-    // Envoyer une réponse au client une fois le scraping et la sauvegarde terminés.
     res.json({
       success: true,
       message: 'Scraping et sauvegarde terminés avec succès.',
@@ -172,19 +155,14 @@ app.post('/api/link', async (req, res) => {
   }
 });
 
-app.listen(4000, () => {
-  console.log('Le serveur est lancé sur le port 4000');
-});
 app.get('/api/restaurants', (req, res) => {
   try {
     const restaurantFilePath = path.join(__dirname, './data/retaurant.json');
-    // Vérifier si le fichier existe avant de le lire
     if (fs.existsSync(restaurantFilePath)) {
       const data = fs.readFileSync(restaurantFilePath, 'utf8');
       const restaurants = JSON.parse(data);
       res.json(restaurants);
     } else {
-      // Si le fichier n'existe pas, renvoyer une réponse avec le statut 404
       res
         .status(404)
         .json({ error: 'Le fichier des restaurants est introuvable.' });
@@ -194,7 +172,6 @@ app.get('/api/restaurants', (req, res) => {
       'Erreur lors de la lecture du fichier JSON des restaurants :',
       error
     );
-    // Renvoyer une réponse avec le statut 500 en cas d'erreur interne du serveur
     res.status(500).json({
       error: 'Erreur lors de la lecture des données des restaurants.',
     });
@@ -203,15 +180,12 @@ app.get('/api/restaurants', (req, res) => {
 
 function reinitialiserDonnees() {
   collectedData = [];
-  donneesSpecifiques = [];
 }
 
 function extraireDonneesSpecifiques(data) {
   const donneesSpecifiques = [];
 
   data.forEach((item) => {
-    console.log('daz mn extraire');
-
     if (
       item.childEarningTaxonomyNodes &&
       item.childEarningTaxonomyNodes.length > 0
@@ -229,57 +203,34 @@ function extraireDonneesSpecifiques(data) {
           categoryName === 'OrderErrorAdjustmentGlobal' ||
           categoryName === 'AdSpend' ||
           categoryName === 'MarketplaceFeeGlobal' ||
-          categoryName === 'MISC_ITEM' ||
-          (item.categoryTotal && item.categoryTotal.text)
+          categoryName === 'MISC_ITEM'
         ) {
           donneesSpecifiques.push({
             categoryName: categoryName,
             categoryTotal: categoryTotal,
           });
         }
-        console.log('Données reçues :', data);
 
-        // Recherche du nœud avec nodeIndex égal à 2
         const nodeIndex2 = data.find((item) => item.nodeIndex === 2);
-        console.log('Nœud avec nodeIndex 2 :', nodeIndex2);
 
         if (nodeIndex2) {
           nodeIndex2.childEarningTaxonomyNodes.forEach((node) => {
-            // Afficher les informations de chaque nœud
-
-            // Vérifier s'il y a des sous-nœuds
             if (node.childEarningTaxonomyNodes.length > 0) {
-              console.log('C  e nœud contient des sous-nœuds : ');
-              // Boucle à travers chaque sous-nœud
               node.childEarningTaxonomyNodes.forEach((subNode) => {
                 if (subNode.categoryName.text === 'DELIVERY_THIRD_PARTY') {
-                  console.log(' - Catégorie de revenu:', subNode.categoryName);
-
-                  console.log(
-                    '   Description:',
-                    subNode.description.title.body.text
-                  );
                   const descriptionText = subNode.description.title.body.text;
-                  const regexMatch = descriptionText.match(/\d+/); // Utilisation d'une expression régulière pour récupérer le nombre
+                  const regexMatch = descriptionText.match(/\d+/);
                   if (regexMatch) {
-                    const numero = parseInt(regexMatch[0]); // Convertir le nombre en entier
-                    console.log('   Numéro:', numero);
+                    const numero = parseInt(regexMatch[0]);
                     donneesSpecifiques.push({
                       categoryName: 'numerodecommande',
                       categoryTotal: numero,
                     });
-                  } else {
-                    console.log('   Aucun numéro trouvé dans la description.');
                   }
                 }
-                // Vous pouvez continuer à accéder à d'autres propriétés au besoin
               });
-            } else {
-              console.log('Ce nœud ne contient pas de sous-nœuds.');
             }
           });
-        } else {
-          console.log("Aucun nœud trouvé avec l'index 2.");
         }
       });
     }
@@ -293,24 +244,8 @@ function extraireDonneesSpecifiques(data) {
         categoryTotal: totalPayout,
       });
     }
-
-    /* const commandesWidget = data[2];
-    if (
-      commandesWidget &&
-      commandesWidget.comparator &&
-      commandesWidget.comparator.currentValue
-    ) {
-      const commandesValue = parseInt(
-        commandesWidget.comparator.currentValue.text
-      );
-      donneesSpecifiques.push({
-        categoryName: 'commandes',
-        categoryTotal: commandesValue,
-      });
-      console.log('tesssssssssssssssttttt' + commandesValue);
-    }*/
   });
-  console.log(donneesSpecifiques);
+
   saveDataToInfo(donneesSpecifiques);
   return donneesSpecifiques;
 }
